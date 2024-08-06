@@ -3,7 +3,7 @@
  * @Author: zengyuanqiu
  * @Date: 2024-04-20 11:33:58
  * @LastEditors: zengyuanqiu
- * @LastEditTime: 2024-07-25 15:02:34
+ * @LastEditTime: 2024-08-06 16:43:27
 -->
 <template>
   <div class="app">
@@ -15,13 +15,14 @@
       id="canvas"
       style="border: 1px solid #ccc"
     ></canvas> -->
+    Hello {{ message }}
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
 
-// const count = ref(0)
+const message = ref('World')
 
 // const fabric = window.fabric
 </script>
