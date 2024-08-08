@@ -9,5 +9,6 @@
 import { createApp } from 'vue'
 // import './style.css'
 import App from './App.vue'
-
-createApp(App).mount('#app')
+import JsonViewer from 'vue3-json-viewer'
+import "vue3-json-viewer/dist/index.css"
+createApp(App).use(JsonViewer).mount('#app')
