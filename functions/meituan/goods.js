@@ -3,7 +3,7 @@
  * @Author: zengyuanqiu
  * @Date: 2024-08-06 19:31:50
  * @LastEditors: zengyuanqiu
- * @LastEditTime: 2024-08-06 19:32:10
+ * @LastEditTime: 2024-09-24 15:23:46
  */
 export function onRequest(context) {
   console.log('商品列表数据')
@@ -118,7 +118,7 @@ export function onRequest(context) {
       ],
       "wmProductVideo": null
     }
-  ], null, 2),{
+  ], null, 2), {
     headers: {
       'Access-Control-Allow-Origin': '*'
     }
