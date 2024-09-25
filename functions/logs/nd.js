@@ -6,7 +6,7 @@ export function onRequest(context) {
   const query = url.searchParams
   if (query.get('w')) {
     logs.push({
-      date: new Date().toLocaleString(),
+      date: Date.now(),
       val: query.get('data')
     })
   }

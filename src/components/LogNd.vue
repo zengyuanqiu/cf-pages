@@ -16,7 +16,10 @@ fetch('/logs/nd?r=1')
   .then(res => res.json())
   .then(res => {
     if (res?.data?.length) {
-      logs.value = res.data.reverse()
+      logs.value = res.data.reverse().map(t => {
+        t.date = new Date(t.date).toLocaleString()
+        return t
+      })
     }
   })
 </script>
