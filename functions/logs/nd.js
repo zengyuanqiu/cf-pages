@@ -1,16 +1,18 @@
 const logs = []
 
-
 export function onRequest(context) {
   const response = { code: 0, data: null }
-  if (context.params.w) {
+  const url = new URL(context.request.url)
+  const query = url.searchParams
+  if (query.get('w')) {
     logs.push({
       date: new Date().toLocaleString(),
-      val: context.params.data
+      val: query.get('data')
     })
   }
-  if (context.params.r) {
-    response.data = logs
+  if (query.get('r')) {
+    response.data = [...logs]
+    logs.length = 0
   }
   return new Response(JSON.stringify(response))
 }
