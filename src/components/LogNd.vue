@@ -1,5 +1,7 @@
 <template>
-  <button @click="getLog">刷新</button>
+  <button @click="getLog">刷新</button>&nbsp;<button @click="clearLog">
+    清空日志
+  </button>
   <hr />
   <ul>
     <li v-for="(t, i) in logs" :key="i">
@@ -27,6 +29,11 @@ function getLog() {
     })
 }
 getLog()
+
+function clearLog() {
+  logs.value = []
+  fetch('/logs/nd?d=1')
+}
 </script>
 
 <style scoped>
