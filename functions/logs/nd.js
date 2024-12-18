@@ -12,6 +12,8 @@ export function onRequest(context) {
   }
   if (query.get('r')) {
     response.data = [...logs]
+  }
+  if (query.get('d')) {
     logs.length = 0
   }
   return new Response(JSON.stringify(response))
