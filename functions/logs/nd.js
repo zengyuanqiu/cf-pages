@@ -1,20 +1,32 @@
-const logs = []
+const LOG_KEY = 'ND_LOGS'
 
-export function onRequest(context) {
+export async function onRequest(context) {
+  const { env } = context
   const response = { code: 0, data: null }
   const url = new URL(context.request.url)
   const query = url.searchParams
-  if (query.get('w')) {
-    logs.push({
-      date: Date.now(),
-      val: query.get('data')
-    })
-  }
-  if (query.get('r')) {
-    response.data = [...logs]
-  }
   if (query.get('d')) {
-    logs.length = 0
+    await env.LOG.delete(LOG_KEY)
   }
-  return new Response(JSON.stringify(response))
+  const w = query.get('w')
+  const r = query.get('r')
+  if (w || r) {
+    const logs = await env.LOG.get(LOG_KEY, 'json') || []
+    if (w) {
+      logs.push({
+        date: Date.now(),
+        val: query.get('data')
+      })
+      await env.LOG.put(LOG_KEY, JSON.stringify(logs))
+      response.data = true
+    }
+    if (r) {
+      response.data = logs
+    }
+  }
+  return new Response(JSON.stringify(response), {
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  })
 }
