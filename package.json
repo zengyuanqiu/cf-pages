@@ -14,6 +14,7 @@
     "vue3-json-viewer": "^2.2.2"
   },
   "devDependencies": {
+    "@unocss/preset-rem-to-px": "^66.0.0",
     "@vitejs/plugin-vue": "^5.0.4",
     "typescript": "^5.2.2",
     "unocss": "^0.59.4",

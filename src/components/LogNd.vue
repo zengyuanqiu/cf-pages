@@ -1,14 +1,20 @@
 <template>
-  <button @click="getLog">刷新</button>&nbsp;<button @click="clearLog">
-    清空日志
-  </button>
-  <hr />
-  <ul>
-    <li v-for="(t, i) in logs" :key="i">
-      <div>{{ t.date }}</div>
-      <div>{{ t.val }}</div>
-    </li>
-  </ul>
+  <div class="flex-1 p-20">
+    <div class="flex">
+      <button @click="getLog">刷新</button>&nbsp;<button @click="clearLog">
+        清空日志
+      </button>
+      <div class="mx-auto pr-240">尼 斗</div>
+    </div>
+
+    <hr />
+    <ul>
+      <li v-for="(t, i) in logs" :key="i">
+        <div>{{ t.date }}</div>
+        <div>{{ t.val }}</div>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script setup>
