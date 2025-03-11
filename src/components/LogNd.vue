@@ -29,6 +29,7 @@ function getLog() {
       if (res?.data?.length) {
         logs.value = res.data.reverse().map(t => {
           t.date = new Date(t.date).toLocaleString()
+          t.val = decodeURIComponent(t.val)
           return t
         })
       }
