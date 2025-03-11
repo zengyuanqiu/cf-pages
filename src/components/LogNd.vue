@@ -11,7 +11,7 @@
     <ul>
       <li v-for="(t, i) in logs" :key="i">
         <div>{{ t.date }}</div>
-        <div class="whitespace-pre">{{ t.val }}</div>
+        <div class="whitespace-pre-wrap">{{ t.val }}</div>
       </li>
     </ul>
   </div>
