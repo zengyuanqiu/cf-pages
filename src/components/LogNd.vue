@@ -1,5 +1,5 @@
 <template>
-  <div class="flex-1 p-20">
+  <div class="flex-1 p-20 overflow-hidden">
     <div class="flex">
       <button @click="getLog">刷新</button>&nbsp;<button @click="clearLog">
         清空日志
