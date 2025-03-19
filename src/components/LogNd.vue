@@ -49,4 +49,7 @@ function clearLog() {
 li {
   margin-top: 20px;
 }
+.whitespace-pre-wrap {
+  overflow-wrap: break-word;
+}
 </style>
