@@ -3,8 +3,8 @@
     <div class="sticky top-28 bg-[#fff] shadow-[0_-28px_0_#fff]">
       <div class="flex">
         <button @click="getLog">刷新</button>&nbsp;<button @click="clearLog">
-          清空日志
-        </button>
+          清空日志</button
+        >&nbsp;共{{ logs.length }}条
         <div class="mx-auto pr-240">尼 斗</div>
       </div>
       <hr />
