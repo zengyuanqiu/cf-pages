@@ -32,13 +32,13 @@
 </template>
 
 <script setup>
-import { ref, reactive, shallowRef } from 'vue'
+import { reactive, useTemplateRef } from 'vue'
 
 const $ = reactive({
   quality: 70,
 })
 
-const linkWrapper = shallowRef()
+const linkWrapper = useTemplateRef('linkWrapper')
 function onFileChange({ target }) {
   ;[...target.files].forEach(compressImage)
   target.value = ''
