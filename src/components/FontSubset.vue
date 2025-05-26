@@ -6,7 +6,7 @@
     <br />
     <br />
     <textarea
-      placeholder="请输入要生成子集的文字"
+      placeholder="子集文字"
       cols="30"
       rows="10"
       v-model.lazy="text"
@@ -14,7 +14,9 @@
     ></textarea>
     <br />
     <br />
-    <button @click="start">开始</button>
+    <button @click="create">生成子集</button>&nbsp;<button @click="look">
+      查看子集
+    </button>
   </div>
 </template>
 
@@ -34,16 +36,15 @@ function onFontChange({ target }) {
   }
 }
 
-function start() {
+function create() {
   const txt = text.value.replace(/[\r\n\s]/g, '')
   if (!fontBuffer || !txt) {
     return
   }
-  const font = Font.create(fontBuffer, {
+  const subsetBuffer = Font.create(fontBuffer, {
     type: 'ttf',
     subset: [...txt].map(t => t.charCodeAt(0)),
-  })
-  const subsetBuffer = font.write({ type: 'ttf' })
+  }).write({ type: 'ttf' })
   const blob = new Blob([subsetBuffer], { type: 'font/ttf' })
   const url = URL.createObjectURL(blob)
   const a = document.createElement('a')
@@ -51,5 +52,18 @@ function start() {
   a.download = `FONT-${Date.now()}.ttf`
   a.click()
   URL.revokeObjectURL(url)
+}
+
+function look() {
+  if (!fontBuffer) return
+  text.value = Font.create(fontBuffer, {
+    type: 'ttf',
+  })
+    .get()
+    .glyf.filter(t => t.unicode)
+    .map(t => {
+      return t.unicode.map(u => String.fromCharCode(u)).join('')
+    })
+    .join('')
 }
 </script>
