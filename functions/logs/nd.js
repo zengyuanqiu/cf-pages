@@ -1,4 +1,5 @@
 const LOG_KEY = 'ND_LOGS'
+const TD_WIP = 'TD_WIP'
 
 export async function onRequest(context) {
   const { env } = context
@@ -23,6 +24,12 @@ export async function onRequest(context) {
     if (r) {
       response.data = logs
     }
+  } else if (query.get('wip')) {
+    await env.LOG.put(TD_WIP, query.get('data'))
+    response.data = true
+  } else if (query.get('rip')) {
+    const ip = await env.LOG.get(TD_WIP)
+    response.data = ip
   }
   return new Response(JSON.stringify(response), {
     headers: {
